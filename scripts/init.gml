@@ -15,7 +15,7 @@ walk_accel = 0.5;
 walk_turn_time = 6;
 initial_dash_time = 14;
 initial_dash_speed = 8;
-dash_speed = 8;
+dash_speed = 7;
 dash_turn_time = 10;
 dash_turn_accel = 1.5;
 dash_stop_time = 4;
@@ -59,7 +59,7 @@ crouch_recovery_frames = 2;
 
 //parry animation frames
 dodge_startup_frames = 1;
-dodge_active_frames = 1;
+dodge_active_frames = 2;
 dodge_recovery_frames = 3;
 
 //tech animation frames
