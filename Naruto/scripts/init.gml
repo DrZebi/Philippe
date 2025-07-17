@@ -104,6 +104,8 @@ if (!custom_clone) {
     beam_length = 0;
     beam_juice = 0;
     beam_juice_max = 60 * 8;
+    beam_follow_offset_x = 0;
+    beam_follow_offset_y = 0;
     c_naruto_nspecial_max_charge = 60 * 8;
     
     //move index constants. 

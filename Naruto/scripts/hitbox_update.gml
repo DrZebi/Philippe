@@ -73,6 +73,15 @@ switch (attack) {
                         beam_clash_logic();
                     }
                 }
+
+                // move the player with the projectile for a dashing effect
+                with (player_id) if attack == AT_NSPECIAL && is_master_player {
+                    if (window >= 6 && window <= 7) {
+                        x = other.x + beam_follow_offset_x;
+                        y = other.y + beam_follow_offset_y;
+                        hsp = other.hsp;
+                    }
+                }
 		
 		//update the total number of hits, based on charge time.
 		if (hitbox_timer == 1) {
@@ -103,6 +112,8 @@ switch (attack) {
                                     with (player_id) {
                                         doing_goku_beam = false;
                                         beam_newest_hbox = noone;
+                                        beam_follow_offset_x = 0;
+                                        beam_follow_offset_y = 0;
                                     }
                                 }
 
@@ -160,6 +171,8 @@ switch (attack) {
                                         with (player_id) {
                                             doing_goku_beam = false;
                                             beam_newest_hbox = noone;
+                                            beam_follow_offset_x = 0;
+                                            beam_follow_offset_y = 0;
                                         }
 
                                         //spawn a 'final hit' hitbox, if specified.
