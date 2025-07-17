@@ -33,6 +33,7 @@ case 2:
     player_id.beam_clash_timer_max = 120;
     player_id.beam_follow_offset_x = player_id.x - x;
     player_id.beam_follow_offset_y = player_id.y - y;
+
        
        
     maximum_number_of_hits = 3; //the total number of hits for this projectile. don't change this here, this gets overwritten in hitbox_update.gml with the constants in user_event0.gml.

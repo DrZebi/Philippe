@@ -74,6 +74,7 @@ switch (attack) {
                     }
                 }
 
+
                 // move the player with the projectile for a dashing effect
                 with (player_id) if attack == AT_NSPECIAL && is_master_player {
                     if (window >= 6 && window <= 7) {
@@ -82,6 +83,7 @@ switch (attack) {
                         hsp = other.hsp;
                     }
                 }
+
 		
 		//update the total number of hits, based on charge time.
 		if (hitbox_timer == 1) {
@@ -114,6 +116,7 @@ switch (attack) {
                                         beam_newest_hbox = noone;
                                         beam_follow_offset_x = 0;
                                         beam_follow_offset_y = 0;
+
                                     }
                                 }
 
