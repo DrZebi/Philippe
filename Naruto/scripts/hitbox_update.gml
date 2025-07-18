@@ -49,76 +49,9 @@ switch (attack) {
 			hsp *= 0.75; break; 
 			
 		}
-                //specify which nspecial projectile is the multi-hit.
-                //ignore hit_priority 1 hitboxes so that Kragg shards don't become multihits lol
-                if (hbox_num != 2) break;
-
-                //keep the projectile anchored to Naruto while he charges forward
-                if (follow_player) {
-                    if (instance_exists(player_id) && player_id.attack == AT_NSPECIAL) {
-                        x = player_id.x + follow_offset_x;
-                        y = player_id.y + follow_offset_y;
-                        depth = player_id.depth - 0.1;
-                    } else {
-                        follow_player = false;
-                    }
-                }
-
-                //check for beam clash with other beam-based specials
-                if (player_id.beam_clash_buddy == noone) {
-                    var me = player_id;
-                    with oPlayer if "has_goku_beam" in self && doing_goku_beam && instance_exists(beam_newest_hbox) {
-                        var him = self;
-                        with beam_newest_hbox if distance_to_object(me.beam_newest_hbox) < 64 {
-                            me.beam_clash_buddy = him;
-                            him.beam_clash_buddy = me;
-                            with me sound_play(sfx_dbfz_hit_broken);
-                            me.beam_juice = max(me.beam_juice, 30);
-                            him.beam_juice = max(him.beam_juice, 30);
-                            me.beam_clash_timer_max = max(me.beam_clash_timer_max, him.beam_clash_timer_max);
-                            him.beam_clash_timer_max = max(me.beam_clash_timer_max, him.beam_clash_timer_max);
-                        }
-                    }
-                } else {
-                    with (player_id) if beam_clash_buddy != noone {
-                        beam_clash_logic();
-                    }
-                }
-              //specify which nspecial projectile is the multi-hit.
-                //ignore hit_priority 1 hitboxes so that Kragg shards don't become multihits lol
-                if (hbox_num != 2) break;
-
-                //check for beam clash with other beam-based specials
-                if (player_id.beam_clash_buddy == noone) {
-                    var me = player_id;
-                    with oPlayer if "has_goku_beam" in self && doing_goku_beam && instance_exists(beam_newest_hbox) {
-                        var him = self;
-                        with beam_newest_hbox if distance_to_object(me.beam_newest_hbox) < 64 {
-                            me.beam_clash_buddy = him;
-                            him.beam_clash_buddy = me;
-                            with me sound_play(sfx_dbfz_hit_broken);
-                            me.beam_juice = max(me.beam_juice, 30);
-                            him.beam_juice = max(him.beam_juice, 30);
-                            me.beam_clash_timer_max = max(me.beam_clash_timer_max, him.beam_clash_timer_max);
-                            him.beam_clash_timer_max = max(me.beam_clash_timer_max, him.beam_clash_timer_max);
-                        }
-                    }
-                } else {
-                    with (player_id) if beam_clash_buddy != noone {
-                        beam_clash_logic();
-                    }
-                }
-
-
-                // move the player with the projectile for a dashing effect
-                with (player_id) if attack == AT_NSPECIAL && is_master_player {
-                    if (window >= 6 && window <= 7) {
-                        x = other.x + beam_follow_offset_x;
-                        y = other.y + beam_follow_offset_y;
-                        hsp = other.hsp;
-                    }
-                }
-
+		//specify which nspecial projectile is the multi-hit. 
+		//ignore hit_priority 1 hitboxes so that Kragg shards don't become multihits lol
+		if (hbox_num != 2) break;
 		
 		//update the total number of hits, based on charge time.
 		if (hitbox_timer == 1) {
@@ -144,25 +77,7 @@ switch (attack) {
 				proj_hitpause = false;
 				
 				//if this projectile has hit its maximum number of times, destroy it.
-
-                                if (hit_counter >= maximum_number_of_hits) {
-                                    destroyed = true;
-                                    with (player_id) {
-                                        doing_goku_beam = false;
-                                        beam_newest_hbox = noone;
-                                    }
-                                }
-                                if (hit_counter >= maximum_number_of_hits) {
-                                    destroyed = true;
-                                    with (player_id) {
-                                        doing_goku_beam = false;
-                                        beam_newest_hbox = noone;
-                                        beam_follow_offset_x = 0;
-                                        beam_follow_offset_y = 0;
-
-                                    }
-                                }
-
+				if (hit_counter >= maximum_number_of_hits) destroyed = true;
 
 			}
 			else {
@@ -213,24 +128,10 @@ switch (attack) {
 				hitpause_inflicted = false;
 				
 				//if this is the final hit, and a 'final hitbox' has been specified, destroy this hitbox and spawn the 'final hitbox'.
-                                if (hit_counter >= maximum_number_of_hits) {
-                                        destroyed = true;
-                                        with (player_id) {
-                                            doing_goku_beam = false;
-                                            beam_newest_hbox = noone;
-                                        }
-
-                                        //spawn a 'final hit' hitbox, if specified.
-                                if (hit_counter >= maximum_number_of_hits) {
-                                        destroyed = true;
-                                        with (player_id) {
-                                            doing_goku_beam = false;
-                                            beam_newest_hbox = noone;
-                                            beam_follow_offset_x = 0;
-                                            beam_follow_offset_y = 0;
-                                        }
-
-                                        //spawn a 'final hit' hitbox, if specified.
+				if (hit_counter >= maximum_number_of_hits) {
+					destroyed = true;
+					
+					//spawn a 'final hit' hitbox, if specified.
 					if (final_hit_hbox_num == 0) break;
 					var final_hitbox = create_hitbox(attack, final_hit_hbox_num, x, y).spr_dir = spr_dir;
 					

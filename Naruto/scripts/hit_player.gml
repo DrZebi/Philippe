@@ -61,19 +61,11 @@ case AT_NSPECIAL:
 			//when the initial projectile hits, spawn a multihit projectile.
 			if (has_hit) exit;
 			has_hit = true;
-                        var rasen = create_hitbox(AT_NSPECIAL, 2, my_hitboxID.x, my_hitboxID.y);
-                        rasen.spr_dir = my_hitboxID.spr_dir;
-                        hit_player_obj.x += rasen.spr_dir * 10;
-                        //pass on the charge strength of this projectile.
-                        rasen.proj_nspecial_charge = my_hitboxID.proj_nspecial_charge;
-                        beam_newest_hbox = rasen;
-                        doing_goku_beam = true;
-                        beam_length = 64;
-                        beam_juice = rasen.proj_nspecial_charge;
-                        beam_juice_max = c_naruto_nspecial_max_charge;
-                        beam_clash_buddy = noone;
-                        beam_clash_timer = 0;
-                        beam_clash_timer_max = 120;
+			var rasen = create_hitbox(AT_NSPECIAL, 2, my_hitboxID.x, my_hitboxID.y);
+			rasen.spr_dir = my_hitboxID.spr_dir;
+			hit_player_obj.x += rasen.spr_dir * 10;
+			//pass on the charge strength of this projectile.
+			rasen.proj_nspecial_charge = my_hitboxID.proj_nspecial_charge;
 		//break;
 		case 2:
 			//multihit projectile: drag player towards projectile.

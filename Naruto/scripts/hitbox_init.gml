@@ -19,40 +19,8 @@ case 2:
     //change this as needed.
     time_between_hits = 6; //after the projectile's hitpause, the projectile will hit again after this many frames.
     final_hit_hbox_num = 3; //index of the 'final hit' hitbox to spawn, after this hitbox has hit a maximum number of times. set to 0 if you don't want a final hitbox.
-    proj_magnet_strength = 0.5; //amount by which the projectile draws the opponent into it on hit, like a magnet.
+    proj_magnet_strength = 0.5; //amount by which the projectile draws the opponent into it on hit, like a magnet. 
                                         //0 = no magnet, 1 = instant magnet. set to something in-between for a more natural-looking attack.
-
-    //mark this projectile as Naruto's active beam for clash logic
-    player_id.beam_newest_hbox = id;
-    player_id.doing_goku_beam = true;
-    player_id.beam_length = 64;
-    player_id.beam_juice = proj_nspecial_charge;
-    player_id.beam_juice_max = player_id.c_naruto_nspecial_max_charge;
-    player_id.beam_clash_buddy = noone;
-    player_id.beam_clash_timer = 0;
-    player_id.beam_clash_timer_max = 120;
-
-    //attach the projectile to Naruto so he dashes with it
-    follow_player = true;
-    follow_offset_x = x - player_id.x;
-    follow_offset_y = y - player_id.y;
-=======
-    proj_magnet_strength = 0.5; //amount by which the projectile draws the opponent into it on hit, like a magnet.
-                                        //0 = no magnet, 1 = instant magnet. set to something in-between for a more natural-looking attack.
-
-    //mark this projectile as Naruto's active beam for clash logic
-    player_id.beam_newest_hbox = id;
-    player_id.doing_goku_beam = true;
-    player_id.beam_length = 64;
-    player_id.beam_juice = proj_nspecial_charge;
-    player_id.beam_juice_max = player_id.c_naruto_nspecial_max_charge;
-    player_id.beam_clash_buddy = noone;
-    player_id.beam_clash_timer = 0;
-    player_id.beam_clash_timer_max = 120;
-    player_id.beam_follow_offset_x = player_id.x - x;
-    player_id.beam_follow_offset_y = player_id.y - y;
-
-
        
        
     maximum_number_of_hits = 3; //the total number of hits for this projectile. don't change this here, this gets overwritten in hitbox_update.gml with the constants in user_event0.gml.
