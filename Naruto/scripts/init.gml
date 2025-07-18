@@ -105,6 +105,21 @@ if (!custom_clone) {
     beam_juice = 0;
     beam_juice_max = 60 * 8;
     c_naruto_nspecial_max_charge = 60 * 8;
+    naruto_clone_despawn_article = noone; //reference of the article that will safely despawn clones. spawned in user_event3.gml.
+
+    //beam clash variables
+    has_goku_beam = true;
+    doing_goku_beam = false;
+    beam_newest_hbox = noone;
+    beam_clash_buddy = noone;
+    beam_clash_timer = 0;
+    beam_clash_timer_max = 120;
+    beam_length = 0;
+    beam_juice = 0;
+    beam_juice_max = 60 * 8;
+    beam_follow_offset_x = 0;
+    beam_follow_offset_y = 0;
+    c_naruto_nspecial_max_charge = 60 * 8;
     
     //move index constants. 
     //each clone needs their own index for certain moves.

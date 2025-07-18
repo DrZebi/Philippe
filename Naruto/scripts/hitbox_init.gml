@@ -36,6 +36,23 @@ case 2:
     follow_player = true;
     follow_offset_x = x - player_id.x;
     follow_offset_y = y - player_id.y;
+=======
+    proj_magnet_strength = 0.5; //amount by which the projectile draws the opponent into it on hit, like a magnet.
+                                        //0 = no magnet, 1 = instant magnet. set to something in-between for a more natural-looking attack.
+
+    //mark this projectile as Naruto's active beam for clash logic
+    player_id.beam_newest_hbox = id;
+    player_id.doing_goku_beam = true;
+    player_id.beam_length = 64;
+    player_id.beam_juice = proj_nspecial_charge;
+    player_id.beam_juice_max = player_id.c_naruto_nspecial_max_charge;
+    player_id.beam_clash_buddy = noone;
+    player_id.beam_clash_timer = 0;
+    player_id.beam_clash_timer_max = 120;
+    player_id.beam_follow_offset_x = player_id.x - x;
+    player_id.beam_follow_offset_y = player_id.y - y;
+
+
        
        
     maximum_number_of_hits = 3; //the total number of hits for this projectile. don't change this here, this gets overwritten in hitbox_update.gml with the constants in user_event0.gml.

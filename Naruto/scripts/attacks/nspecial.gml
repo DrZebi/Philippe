@@ -33,8 +33,9 @@ set_window_value(AT_NSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 4);
 
 //charge rasengan
 set_window_value(AT_NSPECIAL, 5, AG_WINDOW_TYPE, 9); //infinitely-repeating window
-set_window_value(AT_NSPECIAL, 5, AG_WINDOW_LENGTH, 6);
-set_window_value(AT_NSPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 2);
+//match goku charge timing
+set_window_value(AT_NSPECIAL, 5, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_NSPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_NSPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 5);
 
 //fire rasengan startup
